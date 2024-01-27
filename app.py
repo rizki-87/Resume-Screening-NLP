@@ -11,9 +11,9 @@ from EDA import load_data, plot_resumes_per_category, create_wordcloud_for_categ
 
 # Load the necessary files for the model
 # (These paths need to be updated with the correct paths where the files are stored)
-clf_path = r'D:\PORTOFOLIO\Resume-Screening-NLP\clf.pkl'
-tfidf_vectorizer_path = r'D:\PORTOFOLIO\Resume-Screening-NLP\tfidfd.pkl'
-cleaning_function_path = r'D:\PORTOFOLIO\Resume-Screening-NLP\cleanResume_function.dill'
+clf_path = 'clf.pkl'
+tfidf_vectorizer_path = 'tfidfd.pkl'
+cleaning_function_path = 'cleanResume_function.dill'
 
 with open(r'D:\PORTOFOLIO\Resume-Screening-NLP\clf.pkl', 'rb') as file:
     clf = pickle.load(file)
