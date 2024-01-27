@@ -15,10 +15,10 @@ clf_path = 'clf.pkl'
 tfidf_vectorizer_path = 'tfidfd.pkl'
 cleaning_function_path = 'cleanResume_function.dill'
 
-with open(r'D:\PORTOFOLIO\Resume-Screening-NLP\clf.pkl', 'rb') as file:
+with open('clf.pkl', 'rb') as file:
     clf = pickle.load(file)
 
-with open(r'D:\PORTOFOLIO\Resume-Screening-NLP\tfidfd.pkl', 'rb') as file:
+with open('tfidfd.pkl', 'rb') as file:
     tfidf_vectorizer = pickle.load(file)
 
 # with open(r'D:\PORTOFOLIO\Resume-Screening-NLP\cleanResume_function.dill', 'rb') as file:
