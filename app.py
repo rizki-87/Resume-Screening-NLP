@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
-import dill
+# import dill
 import re
 import PyPDF2
 import io
