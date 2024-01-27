@@ -5,6 +5,4 @@ matplotlib
 seaborn
 wordcloud
 PyPDF2
-matplotlib
-seaborn
-wordcloud
+
