@@ -5,4 +5,5 @@ matplotlib
 seaborn
 wordcloud
 PyPDF2
+dill
 
