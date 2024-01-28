@@ -24,3 +24,22 @@ To run the application locally for development or testing purposes:
 
 ![Screenshot 2024-01-29 064248](https://github.com/rizki-87/Resume-Screening-NLP/assets/140106584/a87e4e9a-a796-4f86-92ec-50583226c23e)
 
+## Files Description
+- Resume-Screening-NLP.ipynb: Jupyter notebook with detailed analysis, model training, and evaluation steps.
+- Model_Inference-Resume-Screening-NLP.ipynb: Notebook showcasing how to perform inference with the trained model.
+- app.py: Streamlit web application script for the user interface.
+- clf.pkl: Serialized model file used for predictions.
+- cleanResume_function.dill: Serialized preprocessing function for cleaning resume data.
+- tfidfd.pkl: Serialized TF-IDF vectorizer for text feature extraction.
+- UpdatedResumeDataSet.csv: Dataset used for training the model, comprising various resume samples.
+- requirements.txt: List of Python packages required to run the project.
+- Contributing
+- We welcome contributions to enhance the "Resume-Screening-NLP" project. Please review the CONTRIBUTING.md file for guidelines on contributing to this repository.
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
+## Acknowledgements
+Thanks to Streamlit for providing the framework to deploy this interactive web application.
+Appreciation for the open-source community for the tools and libraries that made this project possible.
+
