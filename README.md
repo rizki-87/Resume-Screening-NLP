@@ -22,4 +22,5 @@ For local development or testing: Python 3.6+, Git.
 ### Running Locally (Optional)
 To run the application locally for development or testing purposes:
 
-(img)['https://cdn.discordapp.com/attachments/1200334778285703189/1201312761683120300/Screenshot_2024-01-29_064248.jpg?ex=65c95cb1&is=65b6e7b1&hm=b626c9dd0a87c32d5c0ec71a6ae35b1f902aefe39a9620fe07707d76bd20ca44&']
+![Screenshot 2024-01-29 064248](https://github.com/rizki-87/Resume-Screening-NLP/assets/140106584/a87e4e9a-a796-4f86-92ec-50583226c23e)
+
