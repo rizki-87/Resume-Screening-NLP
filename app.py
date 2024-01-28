@@ -40,7 +40,7 @@ st.title("Resume Screening with NLP")
 uploaded_file = st.file_uploader("Upload your resume in PDF format:", type="pdf")
 if uploaded_file is not None:
     text = extract_text_from_pdf(uploaded_file)
-    cleaned_text = cleanResume(txt)
+    cleaned_text = cleanResume(text)
     vectorized_text = tfidf_vectorizer.transform([cleaned_text])
     prediction = classification_model.predict(vectorized_text)
     
