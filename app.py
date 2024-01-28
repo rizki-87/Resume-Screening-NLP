@@ -99,10 +99,22 @@ elif selection == "Data Storytelling dan Visualization":
     st.write("This page will showcase visualizations and storytelling based on a dataset obtained from an IT company in London, which serves as the foundation for the development of this NLP model..")
     # Tempat untuk visualisasi data dan storytelling Anda
 
-# Visualization 1: Number of Resumes per Job Category
+    # Visualization 1: Number of Resumes per Job Category
     plt.figure(figsize=(15,5))
     sns.countplot(y='Category', data=df, order = df['Category'].value_counts().index)
     st.pyplot(plt)
+    st.markdown("""
+    #### Insights on Number of Resumes per Job Category
+    - **Dominant Categories:** The "Java Developer" category has the highest number of resumes, indicating a strong market presence.
+    - **Moderate Representation:** "Web Designing", "HR", and "Hadoop" show balanced demand and supply.
+    - **Development Areas:** Fewer resumes for "Advocate" and "Civil Engineer" suggest potential focus areas for HR.
+    - **Recruitment Balance:** Equal numbers in certain categories suggest a talent availability balance.
+
+    **HR Implications:**
+    - Assess and adapt recruitment strategies to match organizational needs.
+    - Identify and address skill gaps through recruitment or training.
+    - Utilize insights to balance recruitment and workforce development efforts.
+    """)
 
     # Visualization 2: Word Cloud for a Specific Category (e.g., Java Developer)
     selected_category = 'Java Developer'
