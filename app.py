@@ -66,17 +66,35 @@ category_mapping = {
     'outside the data above': "Unknown"
 }
 
-st.title("Resume Screening with NLP")
+st.sidebar.title('Navigation')
+options = ["Home", "Data Storytelling dan Visualization", "Model"]
+selection = st.sidebar.radio("Go to", options)
 
-uploaded_file = st.file_uploader("Upload your resume in PDF format:", type="pdf")
-if uploaded_file is not None:
-    text = extract_text_from_pdf(uploaded_file)
-    cleaned_text = cleanResume(text)
-    vectorized_text = tfidf_vectorizer.transform([cleaned_text])
-    prediction = classification_model.predict(vectorized_text)
-    
-    # Mendapatkan kategori berdasarkan prediksi
-    predicted_category = category_mapping.get(prediction[0], "Unknown")
-    
-    st.write(f"Predicted Category: {predicted_category}")  # Menampilkan kategori bukan angka
-    # Tambahkan lebih banyak feedback instan dan analisis di sini
+
+# Konten untuk halaman Home
+if selection == "Home":
+    st.title("Home")
+    st.write("Selamat datang di aplikasi Resume Screening with NLP!")
+    st.write("Ini adalah halaman Home. Anda dapat menggunakan sidebar untuk navigasi.")
+    # Anda bisa menambahkan lebih banyak konten di sini
+
+# Konten untuk halaman Data Storytelling dan Visualization
+elif selection == "Data Storytelling dan Visualization":
+    st.title("Data Storytelling dan Visualization")
+    st.write("Halaman ini akan menampilkan visualisasi data.")
+    # Tempat untuk visualisasi data dan storytelling Anda
+
+# Konten untuk halaman Model (yang sudah kita selesaikan)
+elif selection == "Model":
+    st.title("Resume Screening with NLP")
+    uploaded_file = st.file_uploader("Upload your resume in PDF format:", type="pdf")
+    if uploaded_file is not None:
+        text = extract_text_from_pdf(uploaded_file)
+        cleaned_text = cleanResume(text)
+        vectorized_text = tfidf_vectorizer.transform([cleaned_text])
+        prediction = classification_model.predict(vectorized_text)
+        
+        # Mendapatkan kategori berdasarkan prediksi
+        predicted_category = category_mapping.get(prediction[0], "Unknown")
+        st.write(f"Predicted Category: {predicted_category}")
+        # Tambahkan lebih banyak feedback instan dan analisis di sini
