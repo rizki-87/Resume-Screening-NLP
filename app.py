@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import PyPDF2
-# import dill
 import pickle
 import re
 import matplotlib.pyplot as plt
@@ -10,7 +9,7 @@ from wordcloud import WordCloud
 
 df = pd.read_csv('UpdatedResumeDataSet.csv')
 
-# Fungsi untuk membersihkan teks resume
+# Function to clean resume text
 def cleanResume(txt):
     cleanText = re.sub('http\S+\s', ' ', txt)  # Menghapus URL
     cleanText = re.sub('RT|cc', ' ', cleanText)  # Menghapus RT dan cc
@@ -22,17 +21,13 @@ def cleanResume(txt):
 
     return cleanText
 
-# Fungsi untuk mengekstrak teks dari PDF
+# Function to extract text from PDF
 def extract_text_from_pdf(file):
     reader = PyPDF2.PdfFileReader(file)
     text = ''
     for page in range(reader.numPages):
         text += reader.getPage(page).extractText()
     return text
-
-# # Load fungsi, model, dan vectorizer dari file
-# with open('cleanResume_function.dill', 'rb') as f:
-#     cleanResume_function = dill.load(f)
 
 with open('tfidfd.pkl', 'rb') as f:
     tfidf_vectorizer = pickle.load(f)
@@ -66,7 +61,7 @@ category_mapping = {
     22: "Sales",
     23: "Testing",
     24: "Web Designing",
-    # Jika kategori prediksi tidak ada dalam kamus ini, akan dikembalikan "Unknown"
+    # If the prediction category does not exist in this dictionary, it will return "Unknown"
     'outside the data above': "Unknown"
 }
 
@@ -75,7 +70,7 @@ options = ["Home", "Data Storytelling dan Visualization", "Model"]
 selection = st.sidebar.radio("Go to", options)
 
 
-# Konten untuk halaman Home
+# Content for Home page
 if selection == "Home":
     st.markdown("""
         <h2 style="font-weight:bold;">Simplify Recruit: An NLP Model for Resume Screening</h2>
@@ -93,7 +88,7 @@ if selection == "Home":
     on this journey together and discover the future of recruitment efficiency with SimplifyRecruit!
     """)
 
-# Konten untuk halaman Data Storytelling dan Visualization
+# Content for Data Storytelling and Visualization pages
 elif selection == "Data Storytelling dan Visualization":
     st.title("Data Storytelling dan Visualization")
     st.write("This page will showcase visualizations and storytelling based on a dataset obtained from an IT company in London, which serves as the foundation for the development of this NLP model..")
@@ -162,7 +157,7 @@ elif selection == "Data Storytelling dan Visualization":
     - Use outliers as indicators for additional scrutiny to maintain quality control.
     """)
 
-# Konten untuk halaman Model (yang sudah kita selesaikan)
+# Content for the Model page
 elif selection == "Model":
     st.title("Resume Screening with NLP")
     uploaded_file = st.file_uploader("Upload your resume in PDF format:", type="pdf")
@@ -172,7 +167,7 @@ elif selection == "Model":
         vectorized_text = tfidf_vectorizer.transform([cleaned_text])
         prediction = classification_model.predict(vectorized_text)
         
-        # Mendapatkan kategori berdasarkan prediksi
+        # Get categories based on predictions
         predicted_category = category_mapping.get(prediction[0], "Unknown")
         st.write(f"Predicted Category: {predicted_category}")
-        # Tambahkan lebih banyak feedback instan dan analisis di sini
+    
