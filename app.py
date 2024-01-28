@@ -1,10 +1,12 @@
-
 import streamlit as st
 import pandas as pd
 import PyPDF2
 # import dill
 import pickle
 import re
+import matplotlib.pyplot as plt
+import seaborn as sns
+from wordcloud import WordCloud
 
 # Fungsi untuk membersihkan teks resume
 def cleanResume(txt):
@@ -94,6 +96,32 @@ elif selection == "Data Storytelling dan Visualization":
     st.title("Data Storytelling dan Visualization")
     st.write("Halaman ini akan menampilkan visualisasi data.")
     # Tempat untuk visualisasi data dan storytelling Anda
+
+# Visualization 1: Number of Resumes per Job Category
+    plt.figure(figsize=(15,5))
+    sns.countplot(y='Category', data=df, order = df['Category'].value_counts().index)
+    st.pyplot(plt)
+
+    # Visualization 2: Word Cloud for a Specific Category (e.g., Java Developer)
+    selected_category = 'Java Developer'
+    resumes_in_category = df[df['Category'] == selected_category]['Resume']
+    combined_text = ' '.join(resumes_in_category)
+    wordcloud = WordCloud(width=800, height=400, background_color ='white').generate(combined_text)
+    plt.figure(figsize=(10, 5))
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis('off')
+    plt.title(f'Word Cloud for {selected_category} Resumes')
+    st.pyplot(plt)
+
+    # Visualization 3: Resume Lengths by Category
+    df['Resume_Length'] = df['Resume'].apply(lambda x: len(x.split()))
+    plt.figure(figsize=(25, 8))
+    sns.boxplot(x='Category', y='Resume_Length', data=df)
+    plt.xticks(rotation=45)
+    plt.title('Distribution of Resume Lengths by Category')
+    plt.ylabel('Length of Resume (Number of Words)')
+    plt.xlabel('Category')
+    st.pyplot(plt)
 
 # Konten untuk halaman Model (yang sudah kita selesaikan)
 elif selection == "Model":
