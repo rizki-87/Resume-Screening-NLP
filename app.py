@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from wordcloud import WordCloud
 
+df = pd.read_csv('UpdatedResumeDataSet.csv')
+
 # Fungsi untuk membersihkan teks resume
 def cleanResume(txt):
     cleanText = re.sub('http\S+\s', ' ', txt)  # Menghapus URL
