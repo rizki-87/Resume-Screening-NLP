@@ -77,7 +77,16 @@ if selection == "Home":
         <h2 style="font-weight:bold;">Simplify Recruit: An NLP Model for Resume Screening</h2>
         <h3 style="font-weight:bold;">by Rizki Pria Aditama</h3>
     """, unsafe_allow_html=True)
-    st.markdown("Welcome to SimplifyRecruit, the cutting-edge platform designed to streamline and enhance the resume screening process. With our advanced NLP model, we've created a powerful tool to help you save time and effort in candidate selection. SimplifyRecruit leverages natural language understanding to swiftly analyze and filter through hundreds or even thousands of resumes within seconds, allowing you to focus on the most promising candidates. Our platform offers automated sorting, predictive ranking, and insightful data visualization, empowering you to make informed recruitment decisions efficiently. Seamlessly integrate SimplifyRecruit with your existing Applicant Tracking System (ATS) and elevate your recruitment process to new heights. Explore our Model Page in the navigation menu to perform instant screening or access visualizations and storytelling to gain deeper insights into your recruitment data. Let's embark on this journey together and discover the future of recruitment efficiency with SimplifyRecruit!")
+    st.markdown("""
+    Welcome to SimplifyRecruit, the cutting-edge platform designed to streamline and enhance the resume screening process. 
+    With our advanced NLP model, we've created a powerful tool to help you save time and effort  in  candidate  selection. 
+    SimplifyRecruit leverages natural language understanding to swiftly  analyze  and  filter  through  hundreds  or  even 
+    thousands of resumes within seconds, allowing you to focus on the  most  promising  candidates.  Our  platform  offers 
+    automated sorting, predictive ranking, and insightful data visualization, empowering you to make informed  recruitment 
+    decisions efficiently. Seamlessly integrate SimplifyRecruit with your existing Applicant  Tracking  System  (ATS)  and 
+    elevate your recruitment process to new heights. Explore our Model Page in the  navigation  menu  to  perform  instant 
+    screening or access visualizations and storytelling to gain deeper insights into your recruitment data.  Let's  embark 
+    on this journey together and discover the future of recruitment efficiency with SimplifyRecruit!")
 
 # Konten untuk halaman Data Storytelling dan Visualization
 elif selection == "Data Storytelling dan Visualization":
