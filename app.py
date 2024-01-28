@@ -96,7 +96,7 @@ if selection == "Home":
 # Konten untuk halaman Data Storytelling dan Visualization
 elif selection == "Data Storytelling dan Visualization":
     st.title("Data Storytelling dan Visualization")
-    st.write("Halaman ini akan menampilkan visualisasi data.")
+    st.write("This page will showcase visualizations and storytelling based on a dataset obtained from an IT company in London, which serves as the foundation for the development of this NLP model..")
     # Tempat untuk visualisasi data dan storytelling Anda
 
 # Visualization 1: Number of Resumes per Job Category
