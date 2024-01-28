@@ -126,6 +126,20 @@ elif selection == "Data Storytelling dan Visualization":
     plt.axis('off')
     plt.title(f'Word Cloud for {selected_category} Resumes')
     st.pyplot(plt)
+    st.markdown("""
+    #### Insights from Word Cloud for 'Java Developer' Position
+    - **Keyword Frequency:** Common terms reflect the role's associated skills and experiences.
+    - **Technical Proficiencies:** Frequent mentions of specific technologies highlight key candidate qualifications.
+    - **Experience Emphasis:** The focus on experience duration can inform critical hiring factors.
+    - **Educational Background:** Academic qualifications play a significant role in candidate profiles.
+
+    **HR Utility:**
+    - Aid in efficient resume screening and job description tailoring.
+    - Benchmark candidates against common standards.
+    - Develop training programs to address skill gaps.
+    - Make strategic hiring decisions based on skill representation in the market.
+    """)
+
 
     # Visualization 3: Resume Lengths by Category
     df['Resume_Length'] = df['Resume'].apply(lambda x: len(x.split()))
@@ -136,6 +150,17 @@ elif selection == "Data Storytelling dan Visualization":
     plt.ylabel('Length of Resume (Number of Words)')
     plt.xlabel('Category')
     st.pyplot(plt)
+    st.markdown("""
+    #### Insights from Resume Lengths Distribution
+    - **Content Variability:** Different categories show varying resume lengths, indicating diverse presentation styles.
+    - **Category Norms:** Certain fields like 'HR' and 'Advocate' tend to have shorter resumes, suggesting a preference for conciseness.
+    - **Over-Elaboration Indicators:** Longer resumes in some categories may suggest unnecessary elaboration.
+
+    **HR Department Applications:**
+    - Standardize screening processes and provide application guidance based on industry norms.
+    - Focus on key information for efficiency in review processes.
+    - Use outliers as indicators for additional scrutiny to maintain quality control.
+    """)
 
 # Konten untuk halaman Model (yang sudah kita selesaikan)
 elif selection == "Model":
