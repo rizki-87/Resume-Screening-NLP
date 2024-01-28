@@ -86,7 +86,8 @@ if selection == "Home":
     decisions efficiently. Seamlessly integrate SimplifyRecruit with your existing Applicant  Tracking  System  (ATS)  and 
     elevate your recruitment process to new heights. Explore our Model Page in the  navigation  menu  to  perform  instant 
     screening or access visualizations and storytelling to gain deeper insights into your recruitment data.  Let's  embark 
-    on this journey together and discover the future of recruitment efficiency with SimplifyRecruit!")
+    on this journey together and discover the future of recruitment efficiency with SimplifyRecruit!
+    """)
 
 # Konten untuk halaman Data Storytelling dan Visualization
 elif selection == "Data Storytelling dan Visualization":
