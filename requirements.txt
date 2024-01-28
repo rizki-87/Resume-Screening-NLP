@@ -6,4 +6,6 @@ seaborn
 wordcloud
 PyPDF2==1.26.0
 dill
-
+scikit-learn
+nltk
+scipy
