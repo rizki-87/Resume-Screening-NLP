@@ -4,6 +4,7 @@ import pandas as pd
 import PyPDF2
 # import dill
 import pickle
+import re
 
 # Fungsi untuk membersihkan teks resume
 def cleanResume(txt):
