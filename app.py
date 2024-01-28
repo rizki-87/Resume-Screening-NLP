@@ -2,8 +2,20 @@
 import streamlit as st
 import pandas as pd
 import PyPDF2
-import dill
+# import dill
 import pickle
+
+# Fungsi untuk membersihkan teks resume
+def cleanResume(txt):
+    cleanText = re.sub('http\S+\s', ' ', txt)  # Menghapus URL
+    cleanText = re.sub('RT|cc', ' ', cleanText)  # Menghapus RT dan cc
+    cleanText = re.sub('@\S+', ' ', cleanText)  # Menghapus mentions
+    cleanText = re.sub('#\S+', ' ', cleanText)  # Menghapus hashtags
+    cleanText = re.sub('[%s]' % re.escape("""!"#$%&'()*+,-./:;<=>?@[\]^_'{|}~"""), ' ', cleanText)  # Menghapus punctuations
+    cleanText = re.sub(r'[^\x00-\x7f]', ' ', cleanText)  # Menghapus karakter non-ASCII
+    cleanText = re.sub('\s+', ' ', cleanText)  # Menghapus spasi ekstra
+
+    return cleanText
 
 # Fungsi untuk mengekstrak teks dari PDF
 def extract_text_from_pdf(file):
@@ -13,9 +25,9 @@ def extract_text_from_pdf(file):
         text += reader.getPage(page).extractText()
     return text
 
-# Load fungsi, model, dan vectorizer dari file
-with open('cleanResume_function.dill', 'rb') as f:
-    cleanResume_function = dill.load(f)
+# # Load fungsi, model, dan vectorizer dari file
+# with open('cleanResume_function.dill', 'rb') as f:
+#     cleanResume_function = dill.load(f)
 
 with open('tfidfd.pkl', 'rb') as f:
     tfidf_vectorizer = pickle.load(f)
