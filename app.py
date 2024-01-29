@@ -6,8 +6,12 @@ import re
 import matplotlib.pyplot as plt
 import seaborn as sns
 from wordcloud import WordCloud
+import nltk
 
 df = pd.read_csv('UpdatedResumeDataSet.csv')
+
+nltk.download('punkt')
+nltk.download('stopwords')
 
 # Function to clean resume text
 def cleanResume(txt):
@@ -21,49 +25,9 @@ def cleanResume(txt):
 
     return cleanText
 
-# Function to extract text from PDF
-def extract_text_from_pdf(file):
-    reader = PyPDF2.PdfFileReader(file)
-    text = ''
-    for page in range(reader.numPages):
-        text += reader.getPage(page).extractText()
-    return text
-
-with open('tfidfd.pkl', 'rb') as f:
-    tfidf_vectorizer = pickle.load(f)
-
-with open('clf.pkl', 'rb') as f:
-    classification_model = pickle.load(f)
-
-category_mapping = {
-    0: "Advocate",
-    1: "Arts",
-    2: "Automation Testing",
-    3: "Blockchain",
-    4: "Business Analyst",
-    5: "Civil Engineer",
-    6: "Data Science",
-    7: "Database",
-    8: "DevOps Engineer",
-    9: "DotNet Developer",
-    10: "ETL Developer",
-    11: "Electrical Engineering",
-    12: "HR",
-    13: "Hadoop",
-    14: "Health and Fitness",
-    15: "Java Developer",
-    16: "Mechanical Engineer",
-    17: "Network Security Engineer",
-    18: "Operations Manager",
-    19: "PMO",
-    20: "Python Developer",
-    21: "SAP Developer",
-    22: "Sales",
-    23: "Testing",
-    24: "Web Designing",
-    # If the prediction category does not exist in this dictionary, it will return "Unknown"
-    'outside the data above': "Unknown"
-}
+#loading models
+clf = pickle.load(open('clf.pkl','rb'))
+tfidfd = pickle.load(open('tfidf.pkl','rb'))
 
 st.sidebar.title('Navigation')
 options = ["Home", "Data Storytelling dan Visualization", "Model"]
@@ -160,14 +124,52 @@ elif selection == "Data Storytelling dan Visualization":
 # Content for the Model page
 elif selection == "Model":
     st.title("Resume Screening with NLP")
-    uploaded_file = st.file_uploader("Upload your resume in PDF format:", type="pdf")
+    uploaded_file = st.file_uploader('Upload Resume', type=['txt','pdf'])
+
     if uploaded_file is not None:
-        text = extract_text_from_pdf(uploaded_file)
-        cleaned_text = cleanResume(text)
-        vectorized_text = tfidf_vectorizer.transform([cleaned_text])
-        prediction = classification_model.predict(vectorized_text)
-        
-        # Get categories based on predictions
-        predicted_category = category_mapping.get(prediction[0], "Unknown")
-        st.write(f"Predicted Category: {predicted_category}")
+        try:
+            resume_bytes = uploaded_file.read()
+            resume_text = resume_bytes.decode('utf-8')
+        except UnicodeDecodeError:
+            # If UTF-8 decoding fails, try decoding with 'latin-1'
+            resume_text = resume_bytes.decode('latin-1')
+
+        cleaned_resume = clean_resume(resume_text)
+        input_features = tfidfd.transform([cleaned_resume])
+        prediction_id = clf.predict(input_features)[0]
+        st.write(prediction_id)
+
+        # Map category ID to category name
+        category_mapping = {
+            15: "Java Developer",
+            23: "Testing",
+            8: "DevOps Engineer",
+            20: "Python Developer",
+            24: "Web Designing",
+            12: "HR",
+            13: "Hadoop",
+            3: "Blockchain",
+            10: "ETL Developer",
+            18: "Operations Manager",
+            6: "Data Science",
+            22: "Sales",
+            16: "Mechanical Engineer",
+            1: "Arts",
+            7: "Database",
+            11: "Electrical Engineering",
+            14: "Health and fitness",
+            19: "PMO",
+            4: "Business Analyst",
+            9: "DotNet Developer",
+            2: "Automation Testing",
+            17: "Network Security Engineer",
+            21: "SAP Developer",
+            5: "Civil Engineer",
+            0: "Advocate",
+        }
+
+        category_name = category_mapping.get(prediction_id, "Unknown")
+
+        st.write("Predicted Category:", category_name)
+
     
