@@ -26,8 +26,11 @@ def cleanResume(txt):
     return cleanText
 
 #loading models
-clf = pickle.load(open('clf.pkl','rb'))
-tfidfd = pickle.load(open('tfidf.pkl','rb'))
+with open('tfidfd.pkl', 'rb') as f:
+    tfidf_vectorizer = pickle.load(f)
+
+with open('clf.pkl', 'rb') as f:
+    classification_model = pickle.load(f)
 
 st.sidebar.title('Navigation')
 options = ["Home", "Data Storytelling dan Visualization", "Model"]
