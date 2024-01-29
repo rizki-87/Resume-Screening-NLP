@@ -2,9 +2,21 @@ import streamlit as st
 import pickle
 import re
 import nltk
+import requests
 
 nltk.download('punkt')
 nltk.download('stopwords')
+
+def download_file(url, filename):
+    response = requests.get(url)
+    if response.status_code == 200:
+        with open(filename, 'wb') as f:
+            f.write(response.content)
+
+# Gunakan URL konten mentah dari file 'tfidf.pkl' Anda di GitHub
+file_url = 'https://raw.githubusercontent.com/rizki-87/Resume-Screening-NLP/main/tfidfd.pkl'
+
+download_file(file_url, 'tfidf.pkl')
 
 #loading models
 clf = pickle.load(open('clf.pkl','rb'))
